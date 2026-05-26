@@ -1,5 +1,6 @@
 import React from 'react'
 import { BsRobot } from 'react-icons/bs'
+import { VscRobot } from "react-icons/vsc";
 
 function Footer() {
   return (
@@ -7,9 +8,9 @@ function Footer() {
         <div className='w-full max-w-6xl bg-white rounded-3xl shadow-sm border border-gray-200 py-8 px-3 text-center'>
             <div className='flex justify-center items-center gap-3 mb-3'>
                 <div className='bg-black text-white p-2 rounded-lg'>
-                    <BsRobot size={20}/>
+                    <VscRobot size={26}/>
                 </div>
-                <h2 className='font-semibold'>InterviewIQ</h2>
+                <h2 className='font-semibold text-xl'>InterviewIQ</h2>
 
             </div>
             <p className='text-gray-500 text-sm max-w-xl mx-auto'>

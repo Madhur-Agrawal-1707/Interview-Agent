@@ -2,7 +2,7 @@ import axios from "axios"
 
 export const askAi = async (messages) => {
     try {
-        if (!message || !Array.isArray(messages) || messages.length === 0) {
+        if (!messages || !Array.isArray(messages) || messages.length === 0) {
             throw new Error("Message Array is Empty.");
                         
         }

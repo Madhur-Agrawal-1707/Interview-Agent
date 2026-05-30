@@ -22,9 +22,8 @@ function App() {
         console.log(error);
         dispatch(setUserData(null))
       }
-      getUser()
-      
     }
+    getUser()
   },[dispatch])
   return (
     <Routes>

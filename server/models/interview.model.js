@@ -43,8 +43,12 @@ const interviewSchema = new mongoose.Schema({
         enum: ["Incompleted", "Completed"],
         default: "Incompleted",
     },
-    
+
 
 
 
 },{timestamps:true})
+
+const Interview = mongoose.model("Interview", interviewSchema)
+
+export default Interview;

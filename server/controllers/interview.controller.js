@@ -3,6 +3,7 @@ import * as pdfjsLib from "pdfjs-dist/legacy/build/pdf.mjs"
 import {askAi} from "../services/openRouter.service.js"
 import User from "../models/user.model.js";
 import Interview from "../models/interview.model.js";
+import { error } from "console";
 
 export const analyzeResume = async (req, res) => {
     try {
@@ -79,7 +80,7 @@ export const analyzeResume = async (req, res) => {
 
 export const generateQuestion = async (req, res) => {
     try {
-        const {role, experience, mode, resumeText, projects, skills} = req.body
+        let {role, experience, mode, resumeText, projects, skills} = req.body
 
         role = role?.trim();
         experience = experience?.trim();
@@ -164,17 +165,22 @@ export const generateQuestion = async (req, res) => {
         ];
 
 
-        const aiResponse = await askAi(messages),
+        const aiResponse = await askAi(messages);
 
         if (!aiResponse || !aiResponse.trim()) {
+            console.log("AI returned empty response.");
+            
             return res.status(500).json({
                 message: "AI returned empty response."
             });
+            
+            
         }
 
         const questionsArray = aiResponse.split("\n").map(q => q.trim()).filter(q => q.length > 0).slice(0,5);
 
         if (questionsArray.length === 0) {
+            console.log("AI failed to generate questions.");
             return res.status(500).json({
                 message: "AI failed to generate questions."
             })
@@ -207,6 +213,7 @@ export const generateQuestion = async (req, res) => {
 
 
     } catch (error) {
+        console.log(error);
         return res.status(500).json({message: `failed to create interview ${error}`})
     }
 }

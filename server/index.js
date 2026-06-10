@@ -7,7 +7,7 @@ import authRouter from './routes/auth.route.js';
 import cookieParser from 'cookie-parser';
 import userRouter from './routes/user.route.js';
 import interviewRouter from './routes/interview.route.js';
-import paymentRouter from './routes/payment.route.js';
+import paymentRouter from './routes/payment.route.js'; 
 
 
 const app = express();

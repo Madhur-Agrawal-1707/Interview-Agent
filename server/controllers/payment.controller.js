@@ -37,6 +37,8 @@ export const createOrder = async (req,res) => {
 
 
 export const verifyPayment = async (req,res) => {
+
+
     try {
         const {razorpay_order_id,
       razorpay_payment_id,
@@ -73,7 +75,7 @@ export const verifyPayment = async (req,res) => {
     // Add credits to user
     const updatedUser = await User.findByIdAndUpdate(payment.userId, {
       $inc: { credits: payment.credits }
-    },{new:true});
+    },{returnDocument: "after"});
 
     res.json({
       success: true,
